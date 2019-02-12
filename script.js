@@ -143,6 +143,8 @@ const handleClick = e => {
     node.classList.add("is-primary");
   } else {
     changePointsBy(-1);
+    const correctNode = document.querySelector(".is-correct");
+    correctNode.classList.add("is-primary");
     node.classList.add("is-danger");
   }
   setTimeout(() => {
