@@ -6,6 +6,9 @@
 
 .response-container .button {
   margin-top: 20px;
+  height: 75px;
+  white-space: unset;
+  text-align: center;
 }
 
 .level-data {
@@ -13,11 +16,63 @@
   display: block;
   margin-bottom: 30px;
   height: 30px;
+  font-size: 25px;
 }
 .timer {
   float: right;
+  min-width: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fa-clock {
+  display: flex;
+  align-items: center;
 }
 
 .stats {
   float: left;
+}
+
+.hero-body {
+  padding-top: 0 !important;
+  overflow-y: auto;
+}
+
+.level .title {
+  font-size: 20px;
+}
+
+.response-container .subtitle {
+  font-size: 28px;
+}
+
+html,
+body,
+section,
+.hero-body {
+  height: 100%;
+}
+
+.positive-points {
+  color: #ffdc00;
+}
+.no-points {
+  color: #ffffff;
+}
+
+.negative-points {
+  color: #ff4136;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: garbage;
+}
+
+#question-mount {
+  padding-bottom: 60px;
 }
