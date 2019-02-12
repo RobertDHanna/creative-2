@@ -1,0 +1,23 @@
+.response-container {
+  text-align: center;
+  width: 50%;
+  min-width: 400px;
+}
+
+.response-container .button {
+  margin-top: 20px;
+}
+
+.level-data {
+  width: 100%;
+  display: block;
+  margin-bottom: 30px;
+  height: 30px;
+}
+.timer {
+  float: right;
+}
+
+.stats {
+  float: left;
+}
