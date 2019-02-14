@@ -247,9 +247,9 @@ const handleOutOfTime = () => {
 const getPointsFeedbackText = points => {
   if (points === 0) {
     return "Yikes..";
-  } else if (points < 4) {
+  } else if (points < 2) {
     return "You might want to try an easier difficulty.";
-  } else if (points < 6) {
+  } else if (points < 5) {
     return "Not bad!";
   } else if (points < 10) {
     return "Great job!";
