@@ -100,7 +100,7 @@ const handleNextQuestion = () => {
   console.log(QuestionManager);
   const next = QuestionManager.getNextQuestion();
   if (next === null) {
-    console.log("LAST QUESTION");
+    handleOutOfTime();
     return;
   }
   const questionHTML = buildQuestion(next);
@@ -136,7 +136,9 @@ const buildQuestion = question => {
         <div class="level-data">
             <span class="stats"><i class="fas fa-star ${getPointsClass(
               QuestionManager.points
-            )}"></i> <span id="points">${QuestionManager.points}</span></span>
+            )}"></i> <span id="points">${
+    QuestionManager.points
+  } / 10</span></span>
             <span class="timer"><i class="far fa-clock"></i> <span id="timer-text">${QuestionManager.targetTimer -
               QuestionManager.currTimer}</span></span>
         </div>
@@ -173,10 +175,10 @@ const handleClick = e => {
   const isCorrect = node.className.includes("is-correct");
   node.classList.remove("is-light");
   if (isCorrect) {
-    changePointsBy(2);
+    changePointsBy(1);
     node.classList.add("is-primary");
   } else {
-    changePointsBy(-1);
+    // changePointsBy(-1);
     const correctNode = document.querySelector(".is-correct");
     correctNode.classList.add("is-primary");
     node.classList.add("is-danger");
@@ -190,7 +192,7 @@ const handleClick = e => {
 const changePointsBy = points => {
   const newPoints = QuestionManager.changePointsBy(points);
   const pointsNode = document.querySelector("#points");
-  pointsNode.textContent = newPoints;
+  pointsNode.textContent = `${newPoints} / 10`;
   const starNode = document.querySelector(".fa-star");
   starNode.classList.remove("no-points", "positive-points", "negative-points");
   starNode.classList.add(getPointsClass(newPoints));
@@ -221,10 +223,32 @@ const unBindQuestionHandlers = () => {
 const handleOutOfTime = () => {
   unBindQuestionHandlers();
   unMountQuestion();
+
+  const resultsTitleNode = document.querySelector(".results-title");
+  const resultsSubTitleNode = document.querySelector(".results-subtitle");
+  resultsTitleNode.innerHTML = `You Got <span class="points-color">${
+    QuestionManager.points
+  }</span> Questions Correct`;
+  resultsSubTitleNode.textContent = getPointsFeedbackText(
+    QuestionManager.points
+  );
   toggleGameSectionVisibility(false);
   toggleResultsSectionVisibility(true);
 };
 
+const getPointsFeedbackText = points => {
+  if (points === 0) {
+    return "Yikes..";
+  } else if (points < 4) {
+    return "You might want to try an easier difficulty.";
+  } else if (points < 6) {
+    return "Not bad!";
+  } else if (points < 10) {
+    return "Great job!";
+  } else {
+    return "Pefect score! Amazing.";
+  }
+};
 /**
  * Randomly shuffle an array
  * https://stackoverflow.com/a/2450976/1293256

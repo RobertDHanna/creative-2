@@ -1,3 +1,7 @@
+html {
+  overflow-y: hidden;
+}
+
 .response-container {
   text-align: center;
   width: 50%;
@@ -85,6 +89,7 @@ section,
 .banner-title {
   font-size: 50px;
 }
+
 .result-container {
   text-align: center;
   margin-bottom: 20vh;
@@ -92,4 +97,31 @@ section,
 
 .points-color {
   color: #111111;
+  font-size: 75px;
+}
+
+.results-subtitle {
+  font-size: 30px;
+}
+
+.try-again-btn {
+  font-size: 30px;
+}
+
+.repo-link {
+  margin: 10px;
+  font-size: 20px;
+  color: white;
+}
+
+.repo-link:hover {
+  color: lightgray;
+}
+
+.select {
+  font-size: 25px;
+}
+
+.start-game-btn {
+  font-size: 25px;
 }
