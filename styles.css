@@ -4,8 +4,6 @@ html {
 
 .response-container {
   text-align: center;
-  width: 50%;
-  min-width: 400px;
 }
 
 .response-container .button {
@@ -39,7 +37,6 @@ html {
 }
 
 .hero-body {
-  padding-top: 0 !important;
   overflow-y: auto;
 }
 
@@ -70,11 +67,11 @@ section,
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .show {
-  display: garbage;
+  display: garbage !important;
 }
 
 #question-mount {
@@ -120,8 +117,66 @@ section,
 
 .select {
   font-size: 25px;
+  min-width: 100%;
+}
+
+.select,
+.select select {
+  min-width: 100%;
+}
+
+.column {
+  padding: 3px;
 }
 
 .start-game-btn {
   font-size: 25px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+}
+.loading-text {
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+  margin: 6px;
+}
+@media only screen and (min-width: 1000px) {
+  .response-container {
+    width: 50%;
+    min-width: 400px;
+  }
+  .columns {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  .select,
+  .start-game-btn {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  .banner-title {
+    font-size: 40px;
+  }
+  .select,
+  .start-game-btn {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .banner-title {
+    font-size: 30px;
+  }
+  .select,
+  .start-game-btn {
+    font-size: 12px;
+  }
 }

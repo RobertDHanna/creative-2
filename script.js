@@ -1,12 +1,20 @@
 const startGame = () => {
   console.log("click");
   toggleMainBannerVisibility(false);
+  toggleLoadingVisibility(true);
+  toggleGameSectionVisibility(true);
 
   const difficulty = document.querySelector("#select-difficulty").value;
   const topic = document.querySelector("#select-topic").value;
   getTriviaQuestions(topic, difficulty);
-
-  toggleGameSectionVisibility(true);
+};
+const toggleLoadingVisibility = visible => {
+  document
+    .querySelector(".loading-container")
+    .classList.remove(visible ? "hide" : "show");
+  document
+    .querySelector(".loading-container")
+    .classList.add(visible ? "show" : "hide");
 };
 const toggleMainBannerVisibility = visible => {
   document
@@ -34,7 +42,6 @@ const toggleResultsSectionVisibility = visible => {
 };
 const tryAgain = () => {
   toggleResultsSectionVisibility(false);
-
   toggleMainBannerVisibility(true);
 };
 document.querySelector(".start-game-btn").addEventListener("click", startGame);
@@ -94,6 +101,7 @@ const getTriviaQuestions = async (category, difficulty) => {
   QuestionManager.init(response.results, 10);
   startTimer();
   handleNextQuestion();
+  toggleLoadingVisibility(false);
 };
 
 const handleNextQuestion = () => {
@@ -228,7 +236,7 @@ const handleOutOfTime = () => {
   const resultsSubTitleNode = document.querySelector(".results-subtitle");
   resultsTitleNode.innerHTML = `You Got <span class="points-color">${
     QuestionManager.points
-  }</span> Questions Correct`;
+  }</span> Question${QuestionManager.points === 1 ? "" : "s"} Correct`;
   resultsSubTitleNode.textContent = getPointsFeedbackText(
     QuestionManager.points
   );

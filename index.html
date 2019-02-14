@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Lab 2</title>
     <link
       rel="stylesheet"
@@ -27,42 +27,49 @@
             You get 10 seconds to answer 10 trivia questions.. How many can you
             get correct?
           </h2>
-          <div class="select">
-            <select id="select-difficulty">
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-            </select>
-          </div>
-          <div class="select">
-            <select id="select-topic"
-              ><option value="9">General Knowledge</option>
-              <option value="10">Entertainment: Books</option>
-              <option value="11">Entertainment: Film</option
-              ><option value="12">Entertainment: Music</option>
-              <!-- <option value="13">Entertainment: Musicals & Theatres</option> -->
-              <option value="14">Entertainment: Television</option
-              ><option value="15">Entertainment: Video Games</option>
-              <option value="16">Entertainment: Board Games</option>
-              <option value="17">Science & Nature</option>
-              <option value="18">Science: Computers</option>
-              <option value="19">Science: Mathematics</option>
-              <!-- <option value="20">Mythology</option> -->
-              <!-- <opstion value="21">Sports</option> -->
-              <option value="22">Geography</option
-              ><option value="23">History</option>
-              <option value="24">Politics</option>
-              <!-- <option value="25">Art</option> -->
-              <!-- <option value="26">Celebrities</option> -->
-              <option value="27">Animals</option>
-              <option value="28">Vehicles</option>
-              <!-- <option value="29">Entertainment: Comics</option> -->
-              <!-- <option value="30">Science: Gadgets</option> -->
-              <option value="31">Entertainment: Japanese Anime & Manga</option
-              ><option value="32"
-                >Entertainment: Cartoon & Animations</option
-              ></select
-            >
+          <div class="columns">
+            <div class="column is-3">
+              <div class="select">
+                <select id="select-difficulty">
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
+              </div>
+            </div>
+            <div class="column">
+              <div class="select">
+                <select id="select-topic"
+                  ><option value="9">General Knowledge</option>
+                  <option value="10">Entertainment: Books</option>
+                  <option value="11">Entertainment: Film</option
+                  ><option value="12">Entertainment: Music</option>
+                  <!-- <option value="13">Entertainment: Musicals & Theatres</option> -->
+                  <option value="14">Entertainment: Television</option
+                  ><option value="15">Entertainment: Video Games</option>
+                  <option value="16">Entertainment: Board Games</option>
+                  <option value="17">Science & Nature</option>
+                  <option value="18">Science: Computers</option>
+                  <option value="19">Science: Mathematics</option>
+                  <!-- <option value="20">Mythology</option> -->
+                  <!-- <opstion value="21">Sports</option> -->
+                  <option value="22">Geography</option
+                  ><option value="23">History</option>
+                  <option value="24">Politics</option>
+                  <!-- <option value="25">Art</option> -->
+                  <!-- <option value="26">Celebrities</option> -->
+                  <option value="27">Animals</option>
+                  <option value="28">Vehicles</option>
+                  <!-- <option value="29">Entertainment: Comics</option> -->
+                  <!-- <option value="30">Science: Gadgets</option> -->
+                  <option value="31"
+                    >Entertainment: Japanese Anime & Manga</option
+                  ><option value="32"
+                    >Entertainment: Cartoon & Animations</option
+                  ></select
+                >
+              </div>
+            </div>
           </div>
           <a class="button is-info start-game-btn">BEGIN</a>
         </div>
@@ -73,6 +80,11 @@
       <div class="hero-body">
         <div class="container">
           <div id="question-mount"></div>
+          <div class="loading-container">
+            <div class="loading-text">Now</div>
+            <img class="loading" src="./loading.svg" />
+            <div class="loading-text">Loading</div>
+          </div>
         </div>
       </div>
     </section>
