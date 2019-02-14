@@ -1,12 +1,44 @@
 const startGame = () => {
   console.log("click");
-  document.querySelector(".main-banner").classList.remove("show");
-  document.querySelector(".main-banner").classList.add("hide");
-  getTriviaQuestions(9, "medium");
-  document.querySelector(".game-section").classList.remove("hide");
-  document.querySelector(".game-section").classList.add("show");
+  toggleMainBannerVisibility(false);
+
+  const difficulty = document.querySelector("#select-difficulty").value;
+  const topic = document.querySelector("#select-topic").value;
+  getTriviaQuestions(topic, difficulty);
+
+  toggleGameSectionVisibility(true);
+};
+const toggleMainBannerVisibility = visible => {
+  document
+    .querySelector(".main-banner")
+    .classList.remove(visible ? "hide" : "show");
+  document
+    .querySelector(".main-banner")
+    .classList.add(visible ? "show" : "hide");
+};
+const toggleGameSectionVisibility = visible => {
+  document
+    .querySelector(".game-section")
+    .classList.remove(visible ? "hide" : "show");
+  document
+    .querySelector(".game-section")
+    .classList.add(visible ? "show" : "hide");
+};
+const toggleResultsSectionVisibility = visible => {
+  document
+    .querySelector(".results-section")
+    .classList.remove(visible ? "hide" : "show");
+  document
+    .querySelector(".results-section")
+    .classList.add(visible ? "show" : "hide");
+};
+const tryAgain = () => {
+  toggleResultsSectionVisibility(false);
+
+  toggleMainBannerVisibility(true);
 };
 document.querySelector(".start-game-btn").addEventListener("click", startGame);
+document.querySelector(".try-again-btn").addEventListener("click", tryAgain);
 const QuestionManager = {
   init: (questions, targetTimer) => {
     console.log("init called");
@@ -31,6 +63,9 @@ const QuestionManager = {
   changePointsBy: num => {
     console.log(`changePointsBy called with ${num}`);
     QuestionManager.points += num;
+    if (QuestionManager.points < 0) {
+      QuestionManager.points = 0;
+    }
     return QuestionManager.points;
   },
   changeTimerBy: seconds => {
@@ -45,7 +80,7 @@ const startTimer = () => {
     const newTime = QuestionManager.changeTimerBy(1);
     if (newTime >= QuestionManager.targetTimer) {
       clearInterval(timerInterval);
-      // handleOutOfTime();
+      handleOutOfTime();
     }
     timerNode.textContent = QuestionManager.targetTimer - newTime;
   }, 1000);
@@ -53,10 +88,10 @@ const startTimer = () => {
 
 const getTriviaQuestions = async (category, difficulty) => {
   const response = await fetch(
-    `https://opentdb.com/api.php?amount=30&category=${category}&difficulty=${difficulty}`
+    `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}`
   ).then(response => response.json());
   console.log({ response });
-  QuestionManager.init(response.results, 20);
+  QuestionManager.init(response.results, 10);
   startTimer();
   handleNextQuestion();
 };
@@ -72,7 +107,6 @@ const handleNextQuestion = () => {
   unMountQuestion();
   mountQuestion(questionHTML);
 };
-// getTriviaQuestions(9, "easy");
 
 const buildQuestion = question => {
   const buttons = shuffle([
@@ -139,7 +173,7 @@ const handleClick = e => {
   const isCorrect = node.className.includes("is-correct");
   node.classList.remove("is-light");
   if (isCorrect) {
-    changePointsBy(1);
+    changePointsBy(2);
     node.classList.add("is-primary");
   } else {
     changePointsBy(-1);
@@ -187,6 +221,8 @@ const unBindQuestionHandlers = () => {
 const handleOutOfTime = () => {
   unBindQuestionHandlers();
   unMountQuestion();
+  toggleGameSectionVisibility(false);
+  toggleResultsSectionVisibility(true);
 };
 
 /**

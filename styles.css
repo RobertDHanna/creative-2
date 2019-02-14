@@ -76,3 +76,20 @@ section,
 #question-mount {
   padding-bottom: 60px;
 }
+
+.banner-container {
+  text-align: center;
+  margin-bottom: 20vh;
+}
+
+.banner-title {
+  font-size: 50px;
+}
+.result-container {
+  text-align: center;
+  margin-bottom: 20vh;
+}
+
+.points-color {
+  color: #111111;
+}

@@ -20,12 +20,50 @@
     <section class="hero is-fullheight is-primary is-bold main-banner">
       <div class="hero-body">
         <div class="container banner-container">
-          <h1 class="title">
-            Trivia!
+          <h1 class="title banner-title">
+            10 Seconds 10 Questions
           </h1>
           <h2 class="subtitle">
-            test your knowledge...
+            You get 10 seconds to answer 10 trivia questions.. How many can you
+            get correct?
           </h2>
+          <div class="select">
+            <select id="select-difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+          <div class="select">
+            <select id="select-topic"
+              ><option value="9">General Knowledge</option>
+              <option value="10">Entertainment: Books</option>
+              <option value="11">Entertainment: Film</option
+              ><option value="12">Entertainment: Music</option>
+              <!-- <option value="13">Entertainment: Musicals & Theatres</option> -->
+              <option value="14">Entertainment: Television</option
+              ><option value="15">Entertainment: Video Games</option>
+              <option value="16">Entertainment: Board Games</option>
+              <option value="17">Science & Nature</option>
+              <option value="18">Science: Computers</option>
+              <option value="19">Science: Mathematics</option>
+              <!-- <option value="20">Mythology</option> -->
+              <!-- <opstion value="21">Sports</option> -->
+              <option value="22">Geography</option
+              ><option value="23">History</option>
+              <option value="24">Politics</option>
+              <!-- <option value="25">Art</option> -->
+              <!-- <option value="26">Celebrities</option> -->
+              <option value="27">Animals</option>
+              <option value="28">Vehicles</option>
+              <!-- <option value="29">Entertainment: Comics</option> -->
+              <!-- <option value="30">Science: Gadgets</option> -->
+              <option value="31">Entertainment: Japanese Anime & Manga</option
+              ><option value="32"
+                >Entertainment: Cartoon & Animations</option
+              ></select
+            >
+          </div>
           <a class="button is-info start-game-btn">BEGIN</a>
         </div>
       </div>
@@ -34,7 +72,21 @@
     <section class="hero is-medium is-info is-bold game-section hide">
       <div class="hero-body">
         <div class="container">
-          <div id="question-mount" />
+          <div id="question-mount"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero is-fullheight is-info is-bold results-section hide">
+      <div class="hero-body">
+        <div class="container result-container">
+          <h1 class="title banner-title">
+            You Got <span class="points-color">12</span> Points
+          </h1>
+          <h2 class="subtitle">
+            Great Job!
+          </h2>
+          <a class="button is-primary try-again-btn">Try Again</a>
         </div>
       </div>
     </section>
@@ -55,6 +107,7 @@
       crossorigin="anonymous"
     ></script>
 
+    <script text="type/javascript" src="./categories.js"></script>
     <script text="type/javascript" src="./script.js"></script>
   </body>
 </html>
