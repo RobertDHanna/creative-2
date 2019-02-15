@@ -98,7 +98,7 @@ const getTriviaQuestions = async (category, difficulty) => {
     `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}`
   ).then(response => response.json());
   console.log({ response });
-  QuestionManager.init(response.results, 60);
+  QuestionManager.init(response.results, 40);
   startTimer();
   handleNextQuestion();
   toggleLoadingVisibility(false);
@@ -182,18 +182,21 @@ const handleClick = e => {
   const node = e.target;
   const isCorrect = node.className.includes("is-correct");
   node.classList.remove("is-light");
+  let nextQuestionDelayTime = 0;
   if (isCorrect) {
     changePointsBy(1);
     node.classList.add("is-primary");
+    nextQuestionDelayTime = 500;
   } else {
     // changePointsBy(-1);
     const correctNode = document.querySelector(".is-correct");
     correctNode.classList.add("is-primary");
     node.classList.add("is-danger");
+    nextQuestionDelayTime = 2000;
   }
   setTimeout(() => {
     handleNextQuestion();
-  }, 500);
+  }, nextQuestionDelayTime);
   console.log("click: ", e);
 };
 
