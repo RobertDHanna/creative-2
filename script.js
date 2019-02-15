@@ -98,7 +98,11 @@ const getTriviaQuestions = async (category, difficulty) => {
     `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}`
   ).then(response => response.json());
   console.log({ response });
-  QuestionManager.init(response.results, 40);
+  let time = 40;
+  if (window.location.hash.includes("my-mom-is-a-slow-reader")) {
+    time = 9999;
+  }
+  QuestionManager.init(response.results, time);
   startTimer();
   handleNextQuestion();
   toggleLoadingVisibility(false);
