@@ -98,7 +98,7 @@ const getTriviaQuestions = async (category, difficulty) => {
     `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}`
   ).then(response => response.json());
   console.log({ response });
-  QuestionManager.init(response.results, 10);
+  QuestionManager.init(response.results, 60);
   startTimer();
   handleNextQuestion();
   toggleLoadingVisibility(false);
